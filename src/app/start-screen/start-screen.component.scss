@@ -6,9 +6,30 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 
     img {
         object-fit: cover;
-        height: 72vh;
+        height: 80vh;
+    }
+}
+
+.start-box {
+    position: absolute;
+    top: 312px;
+    left: 296px;
+    right: 0;
+    display: flex;
+    justify-content: center;
+
+    img {
+        object-fit: cover;
+        height: 44vh;
+        width: auto;
+
+        &:hover {
+            filter: brightness(1.15);
+            cursor: pointer;
+        }
     }
 }

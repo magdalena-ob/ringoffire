@@ -2,7 +2,8 @@
     height: 100vh;
     width: 100vw;
     max-width: 100%;
-    background-image: url('/ringoffire/assets/img/design/bg-game.jpg');
+    background-image: url('/assets/img/design/bg-game.jpg');
+    /*background-image: url('/ringoffire/assets/img/design/bg-game.jpg');*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,6 +56,7 @@
 .player-position {
     position: absolute;
     right: 0;
+    z-index: 1;
 }
 
 .btn-add {

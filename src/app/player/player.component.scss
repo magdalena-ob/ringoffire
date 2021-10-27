@@ -2,9 +2,12 @@
     width: 300px;
     display: flex;
     align-items: center;
-    background-color: #6d6a66;
+    background-color: #4e4e4ebf;
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
+    padding-left: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     
     span {
         font-size: 32px;
@@ -12,8 +15,8 @@
     }
 
     img {
-        width: 70px;
-        height: 70px;
+        width: 65px;
+        height: 65px;
         object-fit: cover;
         border-radius: 100%;
     }

@@ -13,8 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class GameComponent implements OnInit {
   game!: Game;
   gameId: any;
-  //pickCardAnimation = false;
-  //currentCard: any;
+  currentCard: any;
 
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
 
@@ -36,7 +35,7 @@ export class GameComponent implements OnInit {
         this.game.players = game.players;
         this.game.stack = game.stack;
         this.game.pickCardAnimation = game.pickCardAnimation;
-        this.game.currentCard = game.currentCard;
+        //this.game.currentCard = game.currentCard;
       });
     });   
   }
@@ -47,16 +46,16 @@ export class GameComponent implements OnInit {
 
   takeCard() {
     if (!this.game.pickCardAnimation) {
-      this.game.currentCard = this.game.stack.pop(); //entferne letzten Wert von array
+      this.currentCard = this.game.stack.pop(); //entferne letzten Wert von array
       this.game.pickCardAnimation = true;
-      console.log('New card: ' + this.game.currentCard);
+      console.log('New card: ' + this.currentCard);
       console.log('Game is ', this.game);
       this.game.currentPlayer++;
       this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
       this.saveGame();
 
       setTimeout(() => {
-        this.game.playedCards.push(this.game.currentCard);
+        this.game.playedCards.push(this.currentCard);
         this.game.pickCardAnimation = false;
         this.saveGame();
       }, 1000);

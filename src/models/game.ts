@@ -4,7 +4,7 @@ export class Game {
     public playedCards: string[] = [];
     public currentPlayer: number = 0;
     public pickCardAnimation = false;
-    public currentCard: any;
+    //public currentCard: any;
 
     constructor() {
         for (let i = 1; i < 14; i++) {
@@ -24,7 +24,7 @@ export class Game {
             playedCards: this.playedCards,
             currentPlayer: this.currentPlayer,
             pickCardAnimation: this.pickCardAnimation,
-            currentCard: this.currentCard
+            //currentCard: this.currentCard
         };
     }
 }

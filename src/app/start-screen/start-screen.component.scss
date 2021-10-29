@@ -1,5 +1,5 @@
 .start-screen {
-    background-color: #ADB9CA;
+    background-color: #adb9ca;
     width: 100vw;
     height: 100vh;
     max-width: 100%;
@@ -11,25 +11,41 @@
     img {
         object-fit: cover;
         height: 80vh;
+
+        @media(max-width: 960px){
+            height: 64vh;
+            padding-left: 33px;
+        }
+    }
+
+    @media (max-width: 960px) {
+        overflow: hidden;
     }
 }
 
 .start-box {
     position: absolute;
-    top: 54vh;
-    left: 24vw;
-    right: 0;
+    bottom: 60px;
     display: flex;
     justify-content: center;
 
     img {
         object-fit: cover;
-        height: 44vh;
+        height: 32vh;
         width: auto;
+
+        @media (max-width: 960px) {
+            height: 26vh;
+        }
 
         &:hover {
             filter: brightness(1.15);
             cursor: pointer;
         }
     }
+
+    @media(max-width: 960px){
+        bottom: 13vh;
+    }
+   
 }

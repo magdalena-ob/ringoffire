@@ -47,5 +47,9 @@
     @media(max-width: 960px){
         bottom: 13vh;
     }
+
+    @media(max-height: 600px) {
+        bottom: 4vh;
+    }
    
 }

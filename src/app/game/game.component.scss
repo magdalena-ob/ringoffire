@@ -104,11 +104,18 @@ app-player, app-player-mobile {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     img {
         object-fit: cover;
         width: 60vw;
     }
+}
+
+.preloadImage {
+    opacity: 0;
+    height: 0px;
+    width: 0px;
+    z-index: -999999;
 }
 
 @media(max-width: 720px) {

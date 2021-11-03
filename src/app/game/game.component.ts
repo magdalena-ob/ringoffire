@@ -14,6 +14,7 @@ import { EditPlayerComponent } from '../edit-player/edit-player.component';
 export class GameComponent implements OnInit {
   game!: Game;
   gameId: any;
+  gameOver = false;
 
 
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
@@ -47,7 +48,9 @@ export class GameComponent implements OnInit {
   }
 
   takeCard() {
-    if (!this.game.pickCardAnimation) {
+    if(this.game.stack.length == 0){
+      this.gameOver = true;
+    } else if (!this.game.pickCardAnimation) {
       this.game.currentCard = this.game.stack.pop(); //entferne letzten Wert von array
       this.game.pickCardAnimation = true;
       console.log('New card: ' + this.game.currentCard);
@@ -70,9 +73,16 @@ export class GameComponent implements OnInit {
     const dialogRef = this.dialog.open(EditPlayerComponent);
 
     dialogRef.afterClosed().subscribe((change: string) => {
-      console.log('Received change', change);
-      this.game.playerImages[playerId] = change;
-      this.saveGame();
+      if (change) {
+        if (change == 'DELETE') {
+          this.game.players.splice(playerId, 1);
+          this.game.playerImages.splice(playerId, 1);
+        } else {
+          console.log('Received change', change);
+          this.game.playerImages[playerId] = change;
+        }
+      this.saveGame();   
+      }
     });
   }
 

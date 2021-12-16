@@ -7,6 +7,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    img {
+        object-fit: cover;
+    }
 }
 
 .card-stack {

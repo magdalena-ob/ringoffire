@@ -15,7 +15,7 @@ export class GameComponent implements OnInit {
   game!: Game;
   gameId: any;
   gameOver = false;
-
+  attentionAnimation = false;
 
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
 
@@ -48,22 +48,26 @@ export class GameComponent implements OnInit {
   }
 
   takeCard() {
-    if(this.game.stack.length == 0){
-      this.gameOver = true;
-    } else if (!this.game.pickCardAnimation) {
-      this.game.currentCard = this.game.stack.pop(); //entferne letzten Wert von array
-      this.game.pickCardAnimation = true;
-      console.log('New card: ' + this.game.currentCard);
-      console.log('Game is ', this.game);
-      this.game.currentPlayer++;
-      this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
-      this.saveGame();
-
-      setTimeout(() => {
-        this.game.playedCards.push(this.game.currentCard);
-        this.game.pickCardAnimation = false;
+    if (this.game.players.length > 0) {
+      if (this.game.stack.length == 0) {
+        this.gameOver = true;
+      } else if (!this.game.pickCardAnimation) {
+        this.game.currentCard = this.game.stack.pop(); //entferne letzten Wert von array
+        this.game.pickCardAnimation = true;
+        console.log('New card: ' + this.game.currentCard);
+        console.log('Game is ', this.game);
+        this.game.currentPlayer++;
+        this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
         this.saveGame();
-      }, 1000);
+
+        setTimeout(() => {
+          this.game.playedCards.push(this.game.currentCard);
+          this.game.pickCardAnimation = false;
+          this.saveGame();
+        }, 1000);
+      }
+    } else {
+      this.attentionAnimation = true;
     }
   }
 
@@ -81,7 +85,7 @@ export class GameComponent implements OnInit {
           console.log('Received change', change);
           this.game.playerImages[playerId] = change;
         }
-      this.saveGame();   
+        this.saveGame();
       }
     });
   }
@@ -96,6 +100,7 @@ export class GameComponent implements OnInit {
         this.saveGame();
       }
     });
+    this.attentionAnimation = false;
   }
 
   saveGame() {

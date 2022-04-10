@@ -2,15 +2,17 @@
     height: 100vh;
     width: 100vw;
     max-width: 100%;
+    /*background-image: url('/assets/img/design/bg-game.jpg');*/
     background-image: url('/assets/img/design/bg-game.jpg');
-    /*background-image: url('/ringoffire/assets/img/design/bg-game.jpg');*/
     display: flex;
     justify-content: center;
     align-items: center;
 
-    img {
-        object-fit: cover;
+    @media (max-width: 960px) {
+        align-items: unset;
+        padding-top: 40vh;
     }
+
 }
 
 .card-stack {
@@ -19,6 +21,10 @@
         position: absolute;
         object-fit: cover;
         width: 140px;
+
+        @media (max-width: 960px) {
+            width: 132px;
+        }
     }
 }
 
@@ -55,6 +61,10 @@
 .played-card {
     right: 25px;
     transform: scale(1.3) translateX(160px) translateY(-180px) rotate(-10deg); 
+
+    @media (max-width: 600px) {
+        transform: scale(0.9) translateX(160px) translateY(-180px) rotate(-10deg) !important; 
+    }
 }
 
 .player-position {

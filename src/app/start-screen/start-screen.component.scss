@@ -15,11 +15,13 @@
         @media(max-width: 960px){
             height: 64vh;
             padding-left: 33px;
+            padding-top: 92px;
         }
     }
 
     @media (max-width: 960px) {
         overflow: hidden;
+        align-items: unset;
     }
 }
 
@@ -45,7 +47,7 @@
     }
 
     @media(max-width: 960px){
-        bottom: 13vh;
+        bottom: 18vh;
     }
 
     @media(max-height: 600px) {
